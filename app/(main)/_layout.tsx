@@ -18,7 +18,12 @@ function CustomDrawerContent(props: any) {
         <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
             <DrawerItemList {...props} />
             <View style={{ flex: 1 }} />
-            <Button />
+            <Button
+                title='Salir'
+                onPress={() => console.log('Log out!')}
+                variant='secondary'
+                size='default'
+            />
         </DrawerContentScrollView>
     );
 }
@@ -40,6 +45,8 @@ export default function MainLayout() {
                     backgroundColor: Colors.dark.background,
                     width: 200,
                     padding: 0,
+                    display: 'flex',
+                    alignItems: 'center',
                 },
                 drawerActiveTintColor: Colors.dark.softHighlight,
                 drawerActiveBackgroundColor: Colors.dark.softHighlight,

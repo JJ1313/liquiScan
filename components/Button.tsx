@@ -24,7 +24,7 @@ export const Button = ({
                 borderColor: Colors.dark.primary,
             },
             text: {
-                color: Colors.dark.text,
+                color: Colors.dark.background,
             },
         },
         secondary: {

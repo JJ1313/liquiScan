@@ -5,7 +5,7 @@ import {
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { withLayoutContext, useNavigation } from 'expo-router';
 import { useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { Button } from '@/components/Button';
 import { Colors } from '@/constants/Colors';
@@ -37,25 +37,46 @@ export default function MainLayout() {
 
     return (
         <Drawer
-            screenOptions={{
+            screenOptions={({ route }) => ({
                 drawerType: 'permanent',
                 swipeEnabled: false,
                 headerShown: false,
                 drawerStyle: {
                     backgroundColor: Colors.dark.background,
                     width: 200,
-                    padding: 0,
+                    margin: 0,
                     display: 'flex',
-                    alignItems: 'center',
+                    borderStyle: 'solid',
+                    borderRightWidth: 2,
+                },
+                drawerItemStyle: {
+                    borderRadius: 0,
                 },
                 drawerActiveTintColor: Colors.dark.softHighlight,
                 drawerActiveBackgroundColor: Colors.dark.softHighlight,
                 drawerInactiveTintColor: Colors.dark.softHighlight,
-                drawerLabelStyle: {
-                    color: Colors.dark.text,
-                    fontSize: 16,
+
+                drawerLabel: () => {
+                    const title: Record<string, string> = {
+                        lists: 'Listas',
+                        bars: 'Barras',
+                        staff: 'Personal',
+                        reports: 'Reportes',
+                    }
+                    return (
+                        <Text style={{
+                            color: Colors.dark.text,
+                            fontSize: 16,
+                            textTransform: 'uppercase',
+                            height: 30,
+                            lineHeight: 30,
+                        }}>
+                            {title[route.name] ?? route.name}
+                        </Text>
+                    )
                 },
-            }}
+
+            })}
             drawerContent={(props) => <CustomDrawerContent {...props} />}
         >
         </Drawer>

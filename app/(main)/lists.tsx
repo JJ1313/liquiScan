@@ -1,4 +1,4 @@
-import { View, Text,  StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function Lists() {
     return (
@@ -8,6 +8,9 @@ export default function Lists() {
     );
 }
 
+export const options = {
+    title: 'Listas',
+}
 const styles = StyleSheet.create({
     titleContainer: {
         flexDirection: 'row',

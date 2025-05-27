@@ -3,7 +3,7 @@ import {
     DrawerItemList,
 } from '@react-navigation/drawer';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { withLayoutContext, useNavigation } from 'expo-router';
+import { withLayoutContext, useNavigation, router } from 'expo-router';
 import { useEffect } from 'react';
 import { View, Text } from 'react-native';
 
@@ -13,14 +13,17 @@ import { Colors } from '@/constants/Colors';
 const { Navigator } = createDrawerNavigator();
 const Drawer = withLayoutContext(Navigator);
 
+const handleLogout = () => {
+    router.replace('/');
+}
 function CustomDrawerContent(props: any) {
     return (
         <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
             <DrawerItemList {...props} />
             <View style={{ flex: 1 }} />
             <Button
-                title='Salir'
-                onPress={() => console.log('Log out!')}
+                title='salir'
+                onPress={handleLogout}
                 variant='secondary'
                 size='default'
             />
@@ -75,13 +78,9 @@ export default function MainLayout() {
                         </Text>
                     )
                 },
-
             })}
             drawerContent={(props) => <CustomDrawerContent {...props} />}
         >
         </Drawer>
     );
 }
-
-
-

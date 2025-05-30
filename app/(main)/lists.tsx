@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { Colors } from '@/constants/Colors';
 import { TragosList } from '@/components/TragosList';
 import { useState } from 'react';
+import { Button } from '@/components/Button';
 
 export default function Lists() {
 
@@ -135,12 +136,21 @@ export default function Lists() {
     ];
 
     const [selected, setSelected] = useState([]);
+    const [lists, setLists] = useState([]);
     return (
-        <ScrollView style={styles.container}>
-            <TragosList title='Piscos' selectedList={selected} setSelected={setSelected} list={piscos} />
-            <TragosList title='Rones' selectedList={selected} setSelected={setSelected} list={rones} />
-            <TragosList title='Vinos' selectedList={selected} setSelected={setSelected} list={vinos} />
-        </ScrollView>
+        <>
+            <ScrollView style={styles.container}>
+                <TragosList title='Piscos' selectedList={selected} setSelected={setSelected} list={piscos} />
+                <TragosList title='Rones' selectedList={selected} setSelected={setSelected} list={rones} />
+                <TragosList title='Vinos' selectedList={selected} setSelected={setSelected} list={vinos} />
+            </ScrollView>
+            <View style={styles.buttonContainer}>
+                <Button title="Crear lista" onPress={() => { console.log('crear lista') }} size='big' />
+            </View>
+            <View style={styles.modal}>
+                <Text>CREAR LISTA</Text>
+            </View>
+        </>
     );
 }
 
@@ -167,4 +177,20 @@ const styles = StyleSheet.create({
         left: 0,
         position: 'absolute',
     },
+    buttonContainer: {
+        height: 80,
+        backgroundColor: Colors.dark.background,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    modal: {
+        position: 'fixed',
+        width: 520,
+        height: 220,
+        top: '50%',
+        left: '50%',
+        backgroundColor: 'red',
+    }
 });

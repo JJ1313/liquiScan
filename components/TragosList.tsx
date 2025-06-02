@@ -7,7 +7,6 @@ type Drink = {
     id: number,
     title: string,
     image: string,
-    selected: boolean,
 }
 interface ListProps {
     title: string;

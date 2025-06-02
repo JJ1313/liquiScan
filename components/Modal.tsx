@@ -5,14 +5,10 @@ type Variant = 'default' | 'search' | 'password' | 'mail';
 interface InputProps {
     placeholder: string,
     variant?: Variant,
-    value: string,
-    onChange?: (text: string) => void,
 }
-export const Input = ({
+export const Modal = ({
     variant = 'default',
-    value,
     placeholder,
-    onChange,
 }: InputProps) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -20,7 +16,7 @@ export const Input = ({
     const isSearch = variant === 'search';
     return (
         <View style={styles.container}>
-            <TextInput style={styles.text} placeholder={placeholder} secureTextEntry={isPassword && !isPasswordVisible} onChangeText={onChange} value={value} />
+            <TextInput style={styles.text} placeholder={placeholder} secureTextEntry={isPassword && !isPasswordVisible} />
             {isSearch && (
                 <Image source={require('@/assets/images/icon-search.png')} style={styles.icon} />
             )}

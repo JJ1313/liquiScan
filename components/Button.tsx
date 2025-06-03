@@ -63,7 +63,7 @@ export const Button = ({
                 height: 20,
             },
             text: {
-                fontSize: 10,
+                fontSize: 9,
             }
         }
     }

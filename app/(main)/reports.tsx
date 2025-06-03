@@ -1,28 +1,34 @@
-import { View, Text,  StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { Colors } from '@/constants/Colors';
 
 export default function Reports() {
     return (
-        <Text>
-REPORTS
-        </Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>
+                Reportes
+            </Text>
+            <View >
+            </View>
+        </View>
+
     );
 }
 
 const styles = StyleSheet.create({
-    titleContainer: {
-        flexDirection: 'row',
+    container: {
+        backgroundColor: Colors.dark.background,
+        minHeight: '100%',
+    },
+    title: {
+        color: Colors.dark.text,
+        height: 80,
+        paddingInline: 60,
+        display: 'flex',
         alignItems: 'center',
-        gap: 8,
-    },
-    stepContainer: {
-        gap: 8,
-        marginBottom: 8,
-    },
-    reactLogo: {
-        height: 178,
-        width: 290,
-        bottom: 0,
-        left: 0,
-        position: 'absolute',
+        textTransform: 'uppercase',
+        borderBottomWidth: 1,
+        fontSize: 24,
+        fontWeight: 500,
+        borderColor: Colors.dark.text,
     },
 });

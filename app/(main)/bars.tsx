@@ -21,17 +21,14 @@ export default function Bars() {
         {
             id: 1,
             title: 'Lista Tropical',
-
         },
         {
             id: 2,
             title: 'Lista Clásica',
-
         },
         {
             id: 3,
             title: 'Lista sin Alcohol',
-
         },
         {
             id: 4,

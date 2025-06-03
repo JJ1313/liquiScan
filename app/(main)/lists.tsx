@@ -167,7 +167,6 @@ export default function Lists() {
 
     const handleDeleteList = () => {
         if (selectedListId == null) return;
-
         setLists(prev => prev.filter(l => l.id !== selectedListId));
         setSelectedListId(null);
         setEditedListItems([]);

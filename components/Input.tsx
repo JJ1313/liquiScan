@@ -25,7 +25,7 @@ export const Input = ({
                 <Image source={require('@/assets/images/icon-search.png')} style={styles.icon} />
             )}
             {isPassword && (
-                <TouchableOpacity onPress={() => setIsPasswordVisible(prev => !prev)}>
+                <TouchableOpacity onPress={() => setIsPasswordVisible(prev => !prev)} style={styles.iconContainer}>
                     <Image
                         source={require('@/assets/images/icon-eye.png')}
                         style={styles.icon}
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         display: 'flex',
         flexDirection: 'row',
-
     },
     text: {
         fontSize: 15,
@@ -53,6 +52,11 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         color: Colors.dark.text,
         flex: 1,
+        paddingBottom: 2,
+    },
+    iconContainer: {
+        display: 'flex',
+        justifyContent: 'center',
     },
     icon: {
         width: 22,

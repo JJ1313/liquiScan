@@ -20,7 +20,14 @@ export const Input = ({
     const isSearch = variant === 'search';
     return (
         <View style={styles.container}>
-            <TextInput style={styles.text} placeholder={placeholder} secureTextEntry={isPassword && !isPasswordVisible} onChangeText={onChange} value={value} />
+            <TextInput
+                style={styles.text}
+                placeholder={placeholder}
+                placeholderTextColor={Colors.dark.text}
+                secureTextEntry={isPassword && !isPasswordVisible}
+                onChangeText={onChange}
+                value={value}
+            />
             {isSearch && (
                 <Image source={require('@/assets/images/icon-search.png')} style={styles.icon} />
             )}
@@ -48,7 +55,6 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 15,
-        textTransform: 'uppercase',
         textAlign: 'left',
         color: Colors.dark.text,
         flex: 1,

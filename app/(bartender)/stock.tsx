@@ -86,7 +86,7 @@ export default function stock() {
     const [scanDrinkId, setScanDrinkId] = useState<number | null>(null);
     const [hasPermission, setHasPermission] = useState(true);
     const [openModalWarning, setOpenModalWarning] = useState(false);
-    const [openModalConfirm, setOpenModalConfirm] = useState(true);
+    const [openModalConfirm, setOpenModalConfirm] = useState(false);
     const params = useLocalSearchParams();
     useEffect(() => {
         const getList = (id: number) => {

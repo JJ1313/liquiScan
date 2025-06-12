@@ -3,6 +3,11 @@ import { Colors } from '@/constants/Colors';
 import { useState } from 'react';
 import { Button } from '@/components/Button';
 
+type Drink = {
+    id: number,
+    title: string,
+    image: string,
+}
 interface ItemProps {
     title: string,
     isLastItem?: boolean,

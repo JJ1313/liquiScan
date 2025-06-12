@@ -1,19 +1,68 @@
-import { View, TouchableOpacity, Image, Text, StyleSheet, ImageSourcePropType } from 'react-native';
-import { Colors } from '@/constants/Colors';
 import { TragosListItem } from '@/components/TragosListItem';
+import { Colors } from '@/constants/Colors';
+import { addItemToSelected, fetchAlcoholes } from '@/services/AlcoholService';
+import { Drink } from '@/types/drinks';
+import { useEffect, useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
+/*
 type Drink = {
     id: number,
     title: string,
     image: string,
 }
+*/
 interface ListProps {
     title: string;
     selectedList: Drink[];
     setSelected: any,
     list: Drink[],
 }
+
+
+
+
+export const TragosList = ({ title, selectedList, setSelected }: ListProps) => {
+    const [list, setList] = useState<Drink[]>([]);
+
+    useEffect(() => {
+        const loadDrinks = async () => {
+            try {
+                const data = await fetchAlcoholes();
+                setList(data);
+            } catch (error) {
+                console.error("Failed to load drinks:", error);
+            }
+        };
+        loadDrinks();
+    }, []);
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.title}>{title}</Text>
+            <ScrollView horizontal style={styles.scrollContainer}>
+                <View style={styles.innerContainer}>
+                    {list.map((item) => (
+                        <TouchableOpacity 
+                            key={item.id} 
+                            onPress={() => addItemToSelected(item)}
+                        >
+                            <TragosListItem
+                                title={item.title}
+                                selected={selectedList.some(drink => drink.id === item.id)}
+                            />
+                        </TouchableOpacity>
+                    ))}
+                </View>
+            </ScrollView>
+        </View>
+    );
+};
+
+
+
+/*
 export const TragosList = ({
     title,
     selectedList,
@@ -52,7 +101,7 @@ export const TragosList = ({
         </View >
     );
 }
-
+*/
 const styles = StyleSheet.create({
     container: {
         width: '90%',

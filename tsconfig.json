@@ -6,8 +6,15 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "jsx": "react-native", // Importante para React Native
+    "moduleResolution": "node", // Importante para la resolución de módulos
+    "esModuleInterop": true,   // Recomendado para importar módulos CommonJS
+    "skipLibCheck": true,      // Útil si hay problemas con tipos de librerías de terceros
+    "noEmit": true,            // Normalmente no quieres que TS emita JS por sí mismo en RN
+    "lib": ["esnext", "dom"]   // Para que TypeScript entienda las APIs modernas de JS y DOM
   },
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js"],
   "include": [
     "**/*.ts",
     "**/*.tsx",

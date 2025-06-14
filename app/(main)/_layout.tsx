@@ -4,17 +4,16 @@ import {
 } from '@react-navigation/drawer';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { withLayoutContext, useNavigation, router } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { View, Text } from 'react-native';
+
 import { Button } from '@/components/Button';
 import { Colors } from '@/constants/Colors';
-import { clearSession, getSession } from '@/utils/session';
 
 const { Navigator } = createDrawerNavigator();
 const Drawer = withLayoutContext(Navigator);
 
-const handleLogout = async () => {
-    await clearSession();
+const handleLogout = () => {
     router.replace('/');
 }
 function CustomDrawerContent(props: any) {
@@ -34,29 +33,11 @@ function CustomDrawerContent(props: any) {
 
 export default function MainLayout() {
     const navigation = useNavigation();
-    const [checking, setChecking] = useState(false);
+
     useEffect(() => {
-        const checkSession = async () => {
-            const { token, role } = await getSession();
-            if (!token || role !== 'admin') {
-                router.replace('/');
-            }
-            else {
-                setChecking(false);
-            }
-        }
-        checkSession();
-    }, []);
-    useEffect(() => {
-        // Abrir o cerrar el drawer
+        // Puedes abrir o cerrar el drawer programáticamente aquí
     }, [navigation]);
-    if (checking) {
-        return (
-            <View>
-                <Text> Cargando...</Text>
-            </View>
-        )
-    }
+
     return (
         <Drawer
             screenOptions={({ route }) => ({
